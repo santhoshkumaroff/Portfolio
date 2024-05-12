@@ -4,10 +4,33 @@
     margin: 0;
     font-family: "Outfit", sans-serif;
     color: #003a85;
+    /* cursor: url('assets/Git.png'), auto; */
+    /* cursor:all-scroll; */
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #085eb4;
+    cursor: pointer;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #012e5c;
 }
 
 body {
@@ -40,17 +63,17 @@ body {
     .navbar {
         padding: 2rem;
         width: 100%;
-        height: 70px;
+        height: 80px;
         display: flex;
         gap: 30px;
         z-index: 2;
         justify-content: right;
         align-items: center;
-        background-color: #cfcfcf;
+        background-color: #000;
 
         a {
             font-weight: 600;
-            color: #003a85;
+            color: #c7c7c7;
             text-decoration: none;
             cursor: pointer;
             padding: 5px 40px;
@@ -84,7 +107,7 @@ body {
     }
 
     .home {
-        background-image: linear-gradient(to top, #003a85, #cfcfcf, #cfcfcf);
+        background-image: linear-gradient(to top, #003a85, #000, #000);
         color: rgba(245, 245, 245, 0.649);
         height: 100vh;
         width: 100%;
@@ -103,7 +126,7 @@ body {
                 font-size: 80px;
                 animation: name 1s linear;
                 opacity: 0px;
-                color: #003a85;
+                color: #fff;
                 -webkit-text-stroke: 1px #003a85;
             }
 
@@ -137,11 +160,20 @@ body {
                 width: 70%;
                 height: 50vh;
                 position: relative;
-                padding: 1rem;
+                /* padding: .5rem; */
                 border-radius: 50%;
-                background-color: rgba(190, 190, 190, 0.762);
-                box-shadow: 5px 5px 5px #000;
+                /* border: 1px solid rgba(255, 255, 255, 0.404); */
+                background-color: rgba(0, 0, 0, 0.762);
+                /* box-shadow: 1px 1px 30px #ffffff7a; */
+                transition: all 0.2s linear;
+                filter: drop-shadow(1px 1px 5px white);
                 /* animation: 1s imgrotate linear; */
+            }
+
+            img:hover {
+                box-shadow: 1px 1px 30px #023578;
+                /* transform: rotateY(180deg); */
+
             }
 
             img:active {
@@ -192,7 +224,7 @@ body {
 
     .card:hover {
         transform: scale(1.08);
-        background-image: linear-gradient(to top left, #003a8562 0% 10%, #cfcfcf 50% 60%, #003a8562);
+        background-image: linear-gradient(to top left, #003a85c3 0% 10%, #cfcfcf 50% 60%, #003a85c3);
 
     }
 
@@ -231,7 +263,7 @@ body {
         width: 100%;
         color: white;
         display: flex;
-        background-color: #cfcfcf;
+        background-color: #00000074;
         /* background-image: linear-gradient(to top left, #003a85, #cfcfcf, #cfcfcf); */
 
         .content {
@@ -292,7 +324,7 @@ body {
     padding: 20px 10px 20px 20px;
     animation: icons 1s linear;
     /* height: 100vh; */
-    background-color: whitesmoke;
+    background-image:linear-gradient(to top right,black,#003a85,black) ;
 }
 
 .icons {
@@ -434,8 +466,10 @@ body {
 
 .main-container .contact {
     width: 100%;
+    background-image: linear-gradient(to top, #000000, #000, #000);
+
     /* background-image: linear-gradient(to top left, #003a85, black, #003a85); */
-    background-image: linear-gradient(to top left, #003a8562 0% 10%, #cfcfcf 50% 60%, #003a8562);
+    /* background-image: linear-gradient(to top left, #003a8562 0% 10%, #cfcfcf 50% 60%, #003a8562); */
 
     input,
     textarea {
@@ -464,14 +498,15 @@ body {
 
 
 }
-.main-container footer{
+
+.main-container footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:15px 10px 0 10px ;
+    padding: 15px 10px 0 10px;
     background-color: #cfcfcf;
-    
-    p{  
+
+    p {
         display: flex;
         align-items: center;
     }
@@ -549,7 +584,6 @@ body {
 /* media query */
 
 @media screen and (max-width:1760px) {
-
     .main-container .about img {
         width: 50%;
     }
@@ -650,6 +684,7 @@ body {
             width: 320px;
         }
     }
+
     .main-container .contact .inputfields {
         margin: 5px 10px 5px 5px;
     }
