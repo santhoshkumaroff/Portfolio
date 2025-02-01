@@ -6,281 +6,1109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Santhosh Kumar S</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Galaxy Background Animation */
+        @keyframes move-background {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        body {
+            margin: 0;
+            background: #0a0a2a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 5px),
+                radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 3px),
+                radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 4px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: move-background 60s linear infinite;
+            z-index: -1;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: rgba(10, 10, 42, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+
+        .navbar button {
+            background: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            color: #0a0a2a;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Home Section */
+        .home {
+            position: relative;
+            z-index: -1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .home img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #00ff88;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Skills Section */
+
+
+        /* Projects Section */
+        .projects .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .projects .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(10, 10, 42, 0.8);
+            padding: 2rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .c-icons a {
+            font-size: 2rem;
+            color: #fff;
+            margin: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .c-icons a:hover {
+            transform: scale(1.2);
+            color: #00ff88;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            .navbar a {
+                margin: 0.5rem;
+            }
+
+            .home img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills .card-deck,
+            .projects .card-deck {
+                flex-direction: column;
+            }
+
+            .contact .row {
+                flex-direction: column;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Original CSS */
+        .main-container {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            padding: 10px 20px;
+            /* color: black; */
+        }
+
+        /* Improved CSS */
+        /* Global Styles */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .main-container {
+            margin: 0;
+            padding: 0;
+            /* color: var(--text-color); */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            /* color: var(--text-color); */
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 70%;
+            left: 15%;
+        }
+
+        /* About Section Styles */
+        .about {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .about .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .about ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about ul li {
+            position: relative;
+            padding: 1rem 0 1rem 2rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--primary-color);
+            margin: 1rem 0;
+            background: white;
+            border-radius: 0 8px 8px 0;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            color: #000;
+        }
+
+        .about ul li:hover {
+            transform: translateX(10px);
+        }
+
+        /* Skills Section Styles */
+
+
+        .skills .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+
+        }
+
+        .skills {
+            padding: 50px 10%;
+            /* background: #1a1a1a; */
+            color: #fff;
+            width: 100%;
+
+            h1 {
+                font-size: 36px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 40px;
+                color: #f39c12;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 3px;
+            }
+
+            .card-deck {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .card {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 15px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                overflow: hidden;
+                max-width: 280px;
+                width: 100%;
+                text-align: center;
+                color: #fff;
+                padding: 20px;
+            }
+
+            .card .card-body {
+                padding: 15px;
+            }
+
+            .card .image {
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            .card img {
+                max-width: 80px;
+                margin: 0 auto;
+                filter: brightness(0) invert(1);
+                transition: filter 0.3s ease;
+            }
+
+            .card-title {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 15px 0;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #f39c12;
+            }
+
+            .card-text {
+                font-size: 16px;
+                line-height: 1.5;
+                color: #ddd;
+            }
+
+            .card:hover {
+                transform: translateY(-15px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .card:hover img {
+                filter: brightness(1.2);
+            }
+
+            @media (max-width: 768px) {
+                .card-deck {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .card {
+                    width: 90%;
+                }
+            }
+
+        }
+
+
+        /* Projects Section Styles */
+        .projects {
+            padding: 5rem 0;
+            background: var(--light-bg);
+
+            h1 {
+                font-size: 36px;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 40px;
+                color: #f39c12;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 3px;
+            }
+        }
+
+        .projects .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .projects .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .projects .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .projects .card-body {
+            padding: 1.5rem;
+        }
+
+        .projects .btn {
+            margin: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--primary-color);
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .projects .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Contact Section Styles */
+        .contact {
+            padding: 5rem 0;
+            /* font-size: 16px; */
+            text-align: center;
+            margin-bottom: 40px;
+            /* color: #f39c12; */
+            /* font-weight: bold; */
+            letter-spacing: 3px;
+
+            h1 {
+                text-transform: uppercase;
+
+            }
+        }
+
+        .contact .row {
+            margin: 0;
+        }
+
+        .contact iframe {
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact .inputfields {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact h1 {
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .contact .btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .c-icons {
+            margin-top: 2rem;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .c-icons a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .c-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Image Sizes */
+        .about img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .nav {
+            background: #111;
+            /* padding: 10px 20px; */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+
+        .menu-icon {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: white;
+            position: relative;
+            right: -100px;
+        }
+
+        .close-icon {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 45px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                margin-left: 20px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                /* align-items: center;
+                justify-content: center; */
+                /* position: absolute;
+                top: 0;
+                right: 0; */
+                width: 100%;
+                height: 100vh;
+                /* background: rgba(0, 0, 0, 0.9);
+                padding: 50px 20px; */
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+            }
+
+            .nav-links button {
+                margin-top: 10px;
+            }
+
+            .close-icon {
+                display: block;
+            }
+        }
+
+        .cool-button {
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cool-button:hover {
+            background: linear-gradient(45deg, #0056b3, #0084ff);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+        }
+
+        .cool-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+        }
+
+        .socialicons {
+            position: fixed;
+            right: 10px;
+            border-radius: 50px 0 0px 50px;
+            top: 200px;
+            padding: 20px 10px 20px 20px;
+            animation: icons 1s linear;
+            /* height: 100vh; */
+            background-image: linear-gradient(to top right, black, #003a85, black);
+        }
+
+        .icons {
+            display: flex;
+            /* height: 40px; */
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .icons i {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            /* Removes any underline or unwanted styles */
+        }
+
+        .icons,
+        .contact a {
+            text-decoration: none !important;
+        }
+
+
+        .icons i:hover,
+        .c-icons i:hover {
+            box-shadow: -5px 5px 5px #003a85;
+            transform: translateY(-3px);
+        }
+
+        .fa-facebook-f {
+            background-color: #3b5998;
+        }
+
+        .fa-linkedin {
+            background-color: #0A66C2;
+        }
+
+        .fa-whatsapp {
+            background-color: #075E54;
+        }
+
+        .fa-youtube {
+            background-color: #FF0000;
+        }
+
+        .fa-instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .fa-twitter {
+            background-color: #1DA1F2;
+        }
+
+        .fa-tumblr {
+            background-color: rgba(189, 213, 239, .4);
+        }
+
+        .fa-pinterest {
+            background-color: #E60023;
+        }
+
+        .fa-telegram {
+            background-color: #0088cc;
+        }
+
+        .c-icons {
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+        }
+
+        .c-icons i {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .fa-envelope {
+            background-color: #0088cc;
+        }
+
+        .fa-phone {
+            background-color: green;
+        }
+
+
+        /* Add to your HTML head */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    </style>
 </head>
 
 <body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
     <div class="main-container">
+        <!-- Navigation Section -->
+        <div class="socialicons">
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/santhosh-kumar-s-8b413118b/"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/sandysanthosh.santhosh.798/"><i class="fa fa-facebook-f"></i></a>
+                <a href="https://twitter.com/SandySk90119708"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ssanthosh_kumar25/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCoZ1fI53w69Frha6ezJMJqQ"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
         <div class="nav">
             <div class="navbar">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Project</a>
-                <a href="#contact">Contact</a>
-                <a href="Santhosh Kumar S.pdf" target="_blank" download><button>Get Resume</button></a>
-            </div>
-            <div class="socialicons">
-                <div class="icons">
-                    <a href="https://www.linkedin.com/in/santhosh-kumar-s-8b413118b/"><i class="fa fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/sandysanthosh.santhosh.798/"><i class="fa fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/SandySk90119708"><i class="fa fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/ssanthosh_kumar25/"><i class="fa fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCoZ1fI53w69Frha6ezJMJqQ"><i class="fa fa-youtube"></i></a>
+                <span class="menu-icon" onclick="toggleMenu()">☰</span>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Project</a>
+                    <a href="#contact">Contact</a>
+                    <a href="Santhosh Kumar S.pdf" target="_blank" download>
+                        <button>Get Resume</button>
+                    </a>
+                    <span class="close-icon" onclick="toggleMenu()">✖</span>
                 </div>
             </div>
         </div>
+        <script>
+            function toggleMenu() {
+                const navLinks = document.querySelector(".nav-links");
+                navLinks.style.display = (navLinks.style.display === "flex") ? "none" : "flex";
+            }
+        </script>
+
+        <!-- Home Section -->
         <div class="home" id="home">
             <div class="image">
                 <a href="https://www.linkedin.com/in/santhosh-kumar-s-8b413118b/" target="_blank">
-                    <img src="assets/pic1.png" alt="no image">
+                    <img src="assets/pic1.png" alt="Profile Picture">
                 </a>
             </div>
             <div class="name">
                 <h1>Santhosh Kumar S</h1>
-                <h3>Web Developer</h3>
+                <h3>Data analyst | ML developer</h3>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about" id="about">
+            <div class="content">
+                <ul>
+                    <li>Master's degree in Data Science from VIT University, Vellore, specializing in machine learning,
+                        data-driven methodologies, and analytical techniques.</li>
+                    <li>Bachelor's in Computer Applications, providing a solid foundation in programming languages, web
+                        technologies, and data analysis.</li>
+                    <li>Passionate about data science, machine learning, and front-end development, with proficiency in
+                        frameworks such as HTML, CSS, and JavaScript.</li>
+                    <li>Knowledge in data analysis like Numpy, Pandas, Matplotlib, Seaborn
+                        insights.</li>
+                    <li>Skilled in designing and developing user-centric interfaces that integrate data science
+                        solutions with front-end technologies.</li>
+                    <li>Capable of visualizing complex datasets through interactive dashboards and user-friendly
+                        representations.</li>
+                </ul>
             </div>
 
+            <!-- <img src="assets/about.png" alt="About Image"> -->
         </div>
-        <div class="about" id="about">
-            <div class="content p-0">
-                <!-- <h1 class="mt-5">About Me</h1> -->
-                <p>I pursued my Master's in Data Science at VIT University, Vellore, where I developed a strong
-                    foundation in data-driven methodologies. Additionally, my Bachelor's in Computer Applications
-                    equipped me with a solid understanding of programming languages and web technologies. During my
-                    academic tenure, I also delved into front-end development principles, mastering frameworks like
-                    HTML, CSS, and JavaScript. This multidisciplinary education uniquely positions me to bridge the gap
-                    between data science and front-end development, enabling me to create intuitive and visually
-                    appealing user interfaces powered by data-driven insights.
-                </p>
-            </div>
-            <img src="assets/about.png" alt="">
-        </div>
+
+        <!-- Skills Section -->
         <div class="skills" id="skills">
             <h1>Skills</h1>
             <div class="card-deck">
-                <div class="row gap-5">
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Python</h5>
-                                <img class="card-img-top" src="assets/pythonlogo.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Python Core, Functions (Build in methods(list,tuple,set,dictionary), User defined
-                                function, Miscellaneous
-                                function),Oops Concepts
-                            </p>
+
+                <!-- First Row of Skills -->
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">Data Science</h5>
+                            <img class="card-img-top" src="assets/ds.png" alt="Data Science Logo">
                         </div>
+                        <p class="card-text">
+                            Strong in theory concepts, data extraction, cleaning, visualization, feature engineering,
+                            and Business Intelligence.
+                            <br><b>Libraries Known:</b> Numpy, Pandas, Matplotlib, Seaborn, Itertools
+                        </p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Web Technology</h5>
-                                <img class="card-img-top" src="assets/htmlcssjs-removebg-preview.png"
-                                    alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Strong Knowledge on Html5 , CSS , JS , BOOTSTRAP and worked on many projects like
-                                portfolio ,
-                                replica , Freelancing.
-                            </p>
+                </div>
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">Python</h5>
+                            <img class="card-img-top" src="assets/pythonlogo.png" alt="Python Logo">
                         </div>
+                        <p class="card-text">Python Core, Functions (Built-in methods: list, tuple, set, dictionary),
+                            User-defined functions, OOP Concepts.</p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Wordpress</h5>
-                                <img class="card-img-top" src="assets/wordpress.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Good in Handling Themes and having knowledge on important plugins Elementor , Starter
-                                template , wp forms , blog pages , good in customizing the pages with responsive and
-                                attractive.
-                            </p>
+                </div>
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">Web Technology</h5>
+                            <img class="card-img-top" src="assets/htmlcssjs-removebg-preview.png" alt="Web Tech Logo">
                         </div>
+                        <p class="card-text">Strong knowledge of HTML5, CSS, JS, BOOTSTRAP, and worked on many projects
+                            such as portfolio, replica, and freelancing.</p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Git</h5>
-                                <img class="card-img-top" src="assets/Git.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Here i have knowledge on git commands to manage my respository and I can handle git
-                                commands.
-                            </p>
+                </div>
+
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">Git</h5>
+                            <img class="card-img-top" src="assets/Git.png" alt="Git Logo">
                         </div>
+                        <p class="card-text">Good knowledge of Git commands for repository management and handling
+                            version control systems.</p>
                     </div>
                 </div>
             </div>
-            <div class="card-deck m-0 pt-0">
-                <div class="row gap-5">
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Data Science</h5>
-                                <img class="card-img-top" src="assets/ds.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Good in Theory Concepts , Data Extraction , Data Cleaning , Data Visualisation / Data
-                                Analysis, Feature Engineering , Buisness Intellingence , EDA (Exploratory Data Analysis)
-                                <br>
-                                <b>Libraries Known : </b> Numpy , Pandas , Matplotlib , Seaborn , Itertools
-                            </p>
+
+            <div class="card-deck mt-5">
+                <!-- Second Row of Skills -->
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">WordPress</h5>
+                            <img class="card-img-top" src="assets/wordpress.png" alt="WordPress Logo">
                         </div>
+                        <p class="card-text">Experienced with handling themes and popular plugins like Elementor,
+                            Starter Template, WP Forms, Blog Pages, and customization for responsive, attractive pages.
+                        </p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">Angular</h5>
-                                <img class="card-img-top" src="assets/angular-icon-logo.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                I have basic knowledge on Angular , Typescript , Primeng.
-                            </p>
+                </div>
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">Angular</h5>
+                            <img class="card-img-top" src="assets/angular-icon-logo.png" alt="Angular Logo">
                         </div>
+                        <p class="card-text">Basic knowledge of Angular, Typescript, Primeng.</p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">SQL</h5>
-                                <img class="card-img-top" src="assets/sql.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Basic SQL (DDL,DML)
-                            </p>
+                </div>
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">SQL</h5>
+                            <img class="card-img-top" src="assets/sql.png" alt="SQL Logo">
                         </div>
+                        <p class="card-text">Basic knowledge of SQL (DDL, DML).</p>
                     </div>
-                    <div class="col-sm card">
-                        <div class="card-body">
-                            <div class="image">
-                                <h5 class="card-title">GITHUB</h5>
-                                <img class="card-img-top" src="assets/github.png" alt="Card image cap">
-                            </div>
-                            <p class="card-text">
-                                Good Knowledge on GitHub cloud and Creating Repository , Manage Repository , Hosting our
-                                project to live website.
-                            </p>
+                </div>
+                <div class="col-sm card">
+                    <div class="card-body">
+                        <div class="image">
+                            <h5 class="card-title">GitHub</h5>
+                            <img class="card-img-top" src="assets/github.png" alt="GitHub Logo">
                         </div>
+                        <p class="card-text">Good knowledge of GitHub cloud, creating repositories, managing
+                            repositories, and hosting projects on live websites.</p>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- Projects Section -->
         <div class="projects" id="projects">
             <h1>Projects</h1>
             <div class="card-deck">
                 <div class="row gap-5">
-                    <div class="row gap-5">
-                        <div class="col-sm card">
-                            <div class="card-body">
-                                <img class="card-img-top" src="assets/irctc.png" alt="Card image cap">
-                                <h5 class="card-title mt-5">IRCTC - home page</h5>
-                                <a href="https://github.com/santhoshkumaroff/IRCTC" target="_blank"><button
-                                        type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View code
-                                    </button></a>
-                                <a href="https://santhoshkumaroff.github.io/IRCTC/" target="_blank"><button
-                                        type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View website
-                                    </button></a>
-                            </div>
-                        </div>
-                        <div class="col-sm card">
-                            <div class="card-body">
-                                <img class="card-img-top" src="assets/porfolio.png" alt="Card image cap">
-                                <h5 class="card-title mt-5">Portfolio</h5>
-                                <a href="https://github.com/santhoshkumaroff/Portfolio" target="_blank"><button
-                                        type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View code
-                                    </button></a>
-                                <a href="#" target="_blank"><button type="button" class="btn btn-primary"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">View website
-                                    </button></a>
-                            </div>
+                    <!-- First Row of Projects -->
+                    <div class="col-sm card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="assets/irctc.png" alt="IRCTC Project">
+                            <h5 class="card-title mt-5">IRCTC - home page</h5>
+                            <a href="https://github.com/santhoshkumaroff/IRCTC" target="_blank">
+                                <button type="button" class="btn btn-primary">View code</button>
+                            </a>
+                            <a href="https://santhoshkumaroff.github.io/IRCTC/" target="_blank">
+                                <button type="button" class="btn btn-primary">View website</button>
+                            </a>
                         </div>
                     </div>
-                    <div class="row gap-5">
-                        <div class="col-sm card">
-                            <div class="card-body">
-                                <img class="card-img-top" src="assets/ecommerce.png" alt="Card image cap">
-                                <h5 class="card-title mt-5">E-commerce</h5>
-                                <a href="https://github.com/santhoshkumaroff/Angular-E-commerce-website"
-                                    target="_blank"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View code
-                                    </button></a>
-                                <a href="https://devismasala-database.web.app/" target="_blank"><button type="button"
-                                        class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View website
-                                    </button></a>
-                            </div>
+                    <div class="col-sm card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="assets/porfolio.png" alt="Portfolio Project">
+                            <h5 class="card-title mt-5">Portfolio</h5>
+                            <a href="https://github.com/santhoshkumaroff/Portfolio" target="_blank">
+                                <button type="button" class="btn btn-primary">View code</button>
+                            </a>
+                            <a href="#" target="_blank">
+                                <button type="button" class="btn btn-primary">View website</button>
+                            </a>
                         </div>
-                        <div class="col-sm card">
-                            <div class="card-body">
-                                <img class="card-img-top" src="assets/wordpress_website.png" alt="Card image cap">
-                                <h5 class="card-title mt-5">Wordpress Website</h5>
-                                <a href="http://sampletemplate.unaux.com/" target="_blank"><button type="button"
-                                        class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">View website
-                                    </button></a>
-                            </div>
+                    </div>
+                </div>
+
+                <div class="row gap-5 mt-5">
+                    <!-- Second Row of Projects -->
+                    <div class="col-sm card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="assets/ecommerce.png" alt="E-commerce Project">
+                            <h5 class="card-title mt-5">E-commerce</h5>
+                            <a href="https://github.com/santhoshkumaroff/Angular-E-commerce-website" target="_blank">
+                                <button type="button" class="btn btn-primary">View code</button>
+                            </a>
+                            <a href="https://devismasala-database.web.app/" target="_blank">
+                                <button type="button" class="btn btn-primary">View website</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="assets/wordpress_website.png" alt="Wordpress Project">
+                            <h5 class="card-title mt-5">Wordpress Website</h5>
+                            <a href="http://sampletemplate.unaux.com/" target="_blank">
+                                <button type="button" class="btn btn-primary">View website</button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Contact Section -->
         <div class="contact" id="contact">
-            <div class="row">
-                <div class="col">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15552.655502235104!2d78.91620470000001!3d12.9613635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad6cbae74d31f1%3A0x95d1c0cd8c961348!2sKilalathur%2C%20Tamil%20Nadu%20635803!5e0!3m2!1sen!2sin!4v1711901290850!5m2!1sen!2sin"
-                        height="580" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade" style="width: 100%;">
-                    </iframe>
-                </div>
-                <div class="col p-5 gap-3 inputfields w-100">
-                    <h1>Contact</h1>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6 p-5">
+                    <h1 class="text-center mb-4">Get in Touch</h1>
+                    <p class="text-center">
+                        Have any queries or collaboration ideas? Feel free to reach out. Whether it’s about data
+                        analytics,
+                        machine learning, or front-end development, I’m always open to discussions and new
+                        opportunities.
+                    </p>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                        <label for="floatingInput">Email Address</label>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingmobno" placeholder="Mobile Number">
                         <label for="floatingmobno">Mobile Number</label>
                     </div>
-                    <div class="form-floating mt-4">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Place your message here</label>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a message here" id="floatingTextarea2"
+                            style="height: 120px"></textarea>
+                        <label for="floatingTextarea2">Your Message</label>
                     </div>
-                    <div class="button mt-4">
-                        <div class="btn btn-primary">Submit</div>
+                    <div class="text-center mt-3">
+                        <button class="cool-button">Submit</button>
                     </div>
-                    <div class="c-icons d-flex">
-                        <a href="https://wa.me/+919025939434"><i class="fa fa-whatsapp"></i></a>
-                        <a href="mailto:ssanthoshkumar.official@gmail.com"><i class="fa fa-envelope"></i></a>
-                        <a href="tel:9025939434"><i class="fa fa-phone"></i></a>
-
+                    <div class="c-icons d-flex justify-content-center">
+                        <a href="https://wa.me/+919025939434" class="text-dark"><i
+                                class="fa fa-whatsapp p-4 text-center"></i></a>
+                        <a href="mailto:ssanthoshkumar.official@gmail.com" class="text-dark"><i
+                                class="fa fa-envelope p-4"></i></a>
+                        <a href="tel:9025939434" class="text-dark"><i class="fa fa-phone p-4"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- Footer -->
         <footer>
-            <p>Developed by &nbsp;<strong>Santhosh Kumar S</strong></p>
+            <p>Developed by <strong>Santhosh Kumar S</strong></p>
         </footer>
     </div>
+    <!-- Rest of your HTML content remains the same -->
+    <!-- Your existing HTML structure here -->
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function () {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', function () {
+            const parallax = document.querySelector('.home');
+            let scrollPosition = window.pageYOffset;
+            parallax.style.transform = 'translateY(' + (scrollPosition * 0.5) + 'px)';
+        });
+
+        // Disable right-click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        }, false);
+    </script>
 </body>
 
 </html>

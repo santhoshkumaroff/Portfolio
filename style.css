@@ -107,6 +107,8 @@ body {
     }
 
     .home {
+        position: relative;
+        z-index: -1;
         background-image: linear-gradient(to top, #003a85, #000, #000);
         color: rgba(245, 245, 245, 0.649);
         height: 100vh;
@@ -318,13 +320,13 @@ body {
 
 .socialicons {
     position: absolute;
-    right: 1px;
+    right: 10px;
     border-radius: 50px 0 0px 50px;
-    top: 200px;
+    top: 500px;
     padding: 20px 10px 20px 20px;
     animation: icons 1s linear;
-    /* height: 100vh; */
-    background-image:linear-gradient(to top right,black,#003a85,black) ;
+    height: 100vh;
+    background-image: linear-gradient(to top right, black, #003a85, black);
 }
 
 .icons {
@@ -625,6 +627,7 @@ body {
         align-items: center;
         flex-direction: column;
         width: 100%;
+        z-index: -1;
     }
 
     .main-container .home .name h1 {
